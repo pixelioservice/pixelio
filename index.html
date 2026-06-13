@@ -131,6 +131,7 @@
       letter-spacing: -0.03em;
       max-width: 780px;
       position: relative;
+      min-height: 2.2em; /* টাইপ করার সময় লেআউট শিফটিং বা লাফানো বন্ধ করতে */
     }
 
     h1 .accent { color: var(--cyan); }
@@ -614,9 +615,9 @@
   <div class="orb orb-2"></div>
 
   <p class="hero-eyebrow">Web Design &amp; Development Studio</p>
-  <h1>
-    We build websites<br/>your business <span class="accent">deserves</span><span class="cursor"></span>
-  </h1>
+
+  <h1 id="typing-text"><span class="cursor"></span></h1>
+
   <p class="hero-sub">
     Pixel.io crafts fast, beautiful, conversion-ready websites — from landing pages to full-scale web platforms. Built for businesses that want to stand out.
   </p>
@@ -776,7 +777,7 @@
   animation: lineFlow 8s infinite linear;
 }
 
-/* প্রতিটি বক্সের বেসিক এবং অ্যানিমেশন সেটআপ */
+/* প্রতিটি باکسের বেসিক এবং অ্যানিমেশন সেটআপ */
 .step {
   background: #0b111e; /* আপনার ওয়েবসাইটের ডার্ক ব্যাকগ্রাউন্ডের সাথে মিলিয়ে নিন */
   border: 1px solid rgba(0, 123, 255, 0.15);
@@ -805,7 +806,7 @@
   100% { width: 100%; }
 }
 
-/* আলো যখন যে باکسের ওপর পৌঁছাবে, তখন সেটি গ্লো হবে */
+/* আলো যখন যে বক্সের ওপর পৌঁছাবে, তখন সেটি গ্লো হবে */
 @keyframes stepGlow {
   0%, 20% {
     border-color: #007bff;
@@ -868,8 +869,6 @@
   </div>
 </section>
 
-<!-- Reviews -->
-
 <section>
   <div class="testimonials">
     <div style="text-align:center; max-width:520px; margin:0 auto;">
@@ -881,14 +880,35 @@
         <div class="stars">★★★★★</div>
         <blockquote>"Pixel.io completely transformed our online presence. Our new site gets compliments every single day — and our leads doubled in two months."</blockquote>
         <div class="testi-author">
-          <div class="avatar">R</div>
+          <div class="avatar">RS</div>
           <div>
-            <strong>Rafi</strong>
-            <span>CEO, Hungry Town Resturant</span>
+            <strong>Rafi Siddiqui</strong>
+            <span>CEO, NovaTech</span>
           </div>
         </div>
       </div>
-      
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Fast, professional, and genuinely talented. They understood our brand immediately and delivered beyond our expectations. Highly recommend."</blockquote>
+        <div class="testi-author">
+          <div class="avatar">NA</div>
+          <div>
+            <strong>Nadia Ahmed</strong>
+            <span>Founder, Urbanist</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The process was smooth from start to finish. They kept us informed, hit every deadline, and the final site is absolutely beautiful."</blockquote>
+        <div class="testi-author">
+          <div class="avatar">TK</div>
+          <div>
+            <strong>Tariq Khan</strong>
+            <span>Director, CloudPeak</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -936,6 +956,34 @@
     <span>Privacy Policy · Terms of Service</span>
   </div>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const textContainer = document.getElementById("typing-text");
+
+  // সম্পূর্ণ টেক্সট এবং কালার স্প্যান লজিক রেডি করা হলো
+  const fullText = "We build websites your business deserves";
+
+  let index = 0;
+
+  function type() {
+    if (index <= fullText.length) {
+      let currentString = fullText.slice(0, index);
+
+      // "deserves" শব্দটিকে আলাদা করে সায়ান কলারের স্প্যান ক্লাসের ভেতর নেওয়া হলো
+      if (currentString.includes("deserves")) {
+        currentString = currentString.replace("deserves", '<span class="accent">deserves</span>');
+      }
+
+      textContainer.innerHTML = currentString + '<span class="cursor"></span>';
+      index++;
+      setTimeout(type, 100); // ১০০ মিলি-সেকেন্ড পর পর প্রতিটা লেটার টাইপ হবে
+    }
+  }
+
+  type();
+});
+</script>
 
 </body>
 </html>
