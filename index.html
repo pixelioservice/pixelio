@@ -131,7 +131,7 @@
       letter-spacing: -0.03em;
       max-width: 780px;
       position: relative;
-      min-height: 2.2em; /* টাইপ করার সময় লেআউট শিফটিং বা লাফানো বন্ধ করতে */
+      min-height: 2.2em;
     }
 
     h1 .accent { color: var(--cyan); }
@@ -352,6 +352,12 @@
       align-items: flex-end;
       margin-bottom: 3rem;
     }
+
+    /* অতিরিক্ত মার্জিন ফিক্স নিচের সেকশনের জন্য */
+    .work-section-divider {
+      margin-top: 5rem;
+    }
+
     .work-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -528,7 +534,6 @@
       .step { margin-bottom: 2rem; }
     }
 
-    /* ── মোবাইল এবং ট্যাবলেটের জন্য অতিরিক্ত রেস্পন্সিভ মিডিয়া কোয়েরি ── */
     @media screen and (max-width: 768px) {
       .process-steps {
         display: flex !important;
@@ -542,17 +547,17 @@
         max-width: 450px !important;
         padding: 24px !important;
         text-align: center !important;
-        animation: none !important; /* মোবাইলে অতিরিক্ত গ্লোয়িং স্ট্যাটিক রাখা হলো */
+        animation: none !important;
         border-color: rgba(0, 123, 255, 0.3) !important;
         box-shadow: 0 4px 15px rgba(0, 123, 255, 0.1) !important;
       }
 
       .glowing-line, .process-steps-container::before {
-        display: none !important; /* মোবাইলে হরাইজন্টাল লাইনটি অফ রাখা ভালো */
+        display: none !important;
       }
 
       .work-grid, .services-grid, .testi-grid {
-        grid-template-columns: 1fr !important; /* কার্ডগুলো এক কলামে পর পর চলে আসবে */
+        grid-template-columns: 1fr !important;
       }
 
       .stats-row {
@@ -574,29 +579,19 @@
   font-weight: 700;
   font-size: 1.5rem;
   text-decoration: none;
-
-  /* ইমেজের বাম পাশের সায়ান থেকে বেগুনি গ্রেডি্যেন্ট ইফেক্ট */
   background: linear-gradient(to right, #38bdf8 0%, #3b82f6 50%, #a855f7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-
-  /* গ্লো কমিয়ে আনা হয়েছে যেন টেক্সট একদম শার্প ও পরিষ্কার দেখায় */
   filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0.2));
   transition: opacity 0.3s ease;
 }
-
-/* স্পেসিফিক .io অংশের কালার */
 .logo span {
   background: #00daff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  /* .io অংশের গ্লো-ও কমিয়ে ব্যালেন্স করা হয়েছে */
   filter: drop-shadow(0 0 4px rgba(0, 218, 255, 0.4));
 }
-
-/* মাউস হোভার করলে সামান্য ইফেক্ট */
 .logo:hover {
   opacity: 0.9;
 }
@@ -615,9 +610,7 @@
   <div class="orb orb-2"></div>
 
   <p class="hero-eyebrow">Web Design &amp; Development Studio</p>
-
   <h1 id="typing-text"><span class="cursor"></span></h1>
-
   <p class="hero-sub">
     Pixel.io crafts fast, beautiful, conversion-ready websites — from landing pages to full-scale web platforms. Built for businesses that want to stand out.
   </p>
@@ -737,34 +730,28 @@
 </section>
 
 <style>
-/* মেইন কন্টেইনার পজিশনিং */
 .process-steps-container {
   position: relative;
   width: 100%;
   margin-top: 50px;
 }
-
 .process-steps {
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
-  z-index: 2; /* যেন কার্ডগুলো লাইনের উপরে থাকে */
+  z-index: 2;
 }
-
-/* কন্টিনিউয়াস গ্লোয়িং লাইন ট্রিক */
 .glowing-line {
   position: absolute;
-  top: 30px; /* আপনার ০১, ০২ সার্কেলের হাইট অনুযায়ী এটি উপরে-নিচে (যেমন: 25px বা 35px) করতে পারেন */
+  top: 30px;
   left: 0;
   height: 2px;
-  background: rgba(0, 123, 255, 0.1); /* ডিফল্ট আবছা লাইন */
+  background: rgba(0, 123, 255, 0.1);
   width: 100%;
   z-index: 1;
 }
-
-/* লাইনের ওপর দিয়ে যে নীল আলোটি যাবে */
 .glowing-line::after {
   content: '';
   position: absolute;
@@ -773,13 +760,11 @@
   height: 100%;
   width: 0%;
   background: #007bff;
-  box-shadow: 0 0 12px #007bff, 0 0 4px #007bff; /* লাইনের গ্লো */
+  box-shadow: 0 0 12px #007bff, 0 0 4px #007bff;
   animation: lineFlow 8s infinite linear;
 }
-
-/* প্রতিটি باکسের বেসিক এবং অ্যানিমেশন সেটআপ */
 .step {
-  background: #0b111e; /* আপনার ওয়েবসাইটের ডার্ক ব্যাকগ্রাউন্ডের সাথে মিলিয়ে নিন */
+  background: #0b111e;
   border: 1px solid rgba(0, 123, 255, 0.15);
   border-radius: 8px;
   padding: 20px;
@@ -787,17 +772,11 @@
   transition: all 0.4s ease;
   animation: stepGlow 8s infinite linear;
 }
-
-/* টাইম ডিলে (লাইন যেভাবে আগাবে, সেই অনুযায়ী বক্স জ্বলবে) */
 #step1 { animation-delay: 0s; }
 #step2 { animation-delay: 2s; }
 #step3 { animation-delay: 4s; }
 #step4 { animation-delay: 6s; }
 
-
-/* ────── অ্যানিমেশন কি-ফ্রেম (Keyframes) ────── */
-
-/* ১ নম্বর থেকে ৪ নম্বর পর্যন্ত লাইনের আলো যাওয়ার লজিক */
 @keyframes lineFlow {
   0% { width: 0%; }
   25% { width: 25%; }
@@ -805,8 +784,6 @@
   75% { width: 75%; }
   100% { width: 100%; }
 }
-
-/* আলো যখন যে বক্সের ওপর পৌঁছাবে, তখন সেটি গ্লো হবে */
 @keyframes stepGlow {
   0%, 20% {
     border-color: #007bff;
@@ -818,27 +795,72 @@
   }
 }
 </style>
+
 <section class="work" id="work">
   <div class="work-inner">
+
     <div class="work-header">
       <div>
         <p class="section-label">Our Work</p>
-        <h2>Our Upcoming Projects</h2>
+        <h2>Completed Projects</h2>
       </div>
       <a href="contact.html" class="btn-ghost" style="white-space:nowrap">Start yours →</a>
     </div>
-    <div class="work-grid">
 
-     <div class="work-card">
+    <div class="work-grid">
+      <div class="work-card">
   <div class="work-thumb work-thumb-2">
-    <img src="img1.png" alt="TechKitch E-Commerce" class="work-img" />
-  </div>
+          <img src="houngry.png" alt="TechKitch E-Commerce" class="work-img" />
+        </div>
   <div class="work-info">
-    <p class="work-tag">E-Commerce Website</p>
-    <h3>TechKitch</h3>
-    <p>A mid-scale e-commerce platform built with an intuitive UI and seamless user experience to drive business growth.</p>
+    <p class="work-tag">Resturant & Food delivery</p>
+    <h3>Hungry Town</h3>
+    <p>An premium website with food delivery dashboard system tailored for local modern restaurants.</p>
   </div>
 </div>
+      <div class="work-card">
+  <div class="work-thumb work-thumb-2">
+
+        </div>
+  <div class="work-info">
+    <p class="work-tag">Loading...</p>
+    <h3>Loading...</h3>
+  </div>
+</div>
+
+    </div>
+    <div class="work-header work-section-divider">
+      <div>
+        <p class="section-label">Next Phase</p>
+        <h2>Upcoming Projects</h2>
+      </div>
+    </div>
+
+    <div class="work-grid">
+ <div class="work-card">
+        <div class="work-thumb work-thumb-2">
+          <img src="img1.png" alt="TechKitch E-Commerce" class="work-img" />
+        </div>
+        <div class="work-info">
+          <p class="work-tag">E-Commerce Website</p>
+          <h3>TechKitch</h3>
+          <p>A mid-scale e-commerce platform built with an intuitive UI and seamless user experience to drive business growth.</p>
+        </div>
+      </div>
+       <div class="work-card">
+        <div class="work-thumb work-thumb-3">
+          <img src="gllogo.png" alt="GreenLeaf Co." class="work-img" />
+        </div>
+        <div class="work-info">
+          <p class="work-tag">Landing Page</p>
+          <h3>GreenLeaf Co.</h3>
+          <p>A clean, conversion-focused landing page that drove a 3× uplift in newsletter sign-ups.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <style>
 .work-thumb-2 {
@@ -847,27 +869,13 @@
   align-items: center;
   justify-content: center;
 }
-
 .work-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* ছবি চ্যাপ্টা না হয়ে বক্সের সাইজ অনুযায়ী সুন্দরভাবে ফিট হবে */
+  object-fit: cover;
   display: block;
 }
 </style>
-      <div class="work-card">
-        <div class="work-thumb work-thumb-3">
-         <img src="gllogo.png" alt="GreenLeaf Co." class="work-img" />
-          </div>
-        <div class="work-info">
-          <p class="work-tag">Landing Page</p>
-          <h3>GreenLeaf Co.</h3>
-          <p>A clean, conversion-focused landing page that drove a 3× uplift in newsletter sign-ups.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section>
   <div class="testimonials">
@@ -878,37 +886,16 @@
     <div class="testi-grid">
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <blockquote>"Pixel.io completely transformed our online presence. Our new site gets compliments every single day — and our leads doubled in two months."</blockquote>
-        <div class="testi-author">
-          <div class="avatar">RS</div>
-          <div>
-            <strong>Rafi Siddiqui</strong>
-            <span>CEO, NovaTech</span>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
         <blockquote>"Fast, professional, and genuinely talented. They understood our brand immediately and delivered beyond our expectations. Highly recommend."</blockquote>
         <div class="testi-author">
           <div class="avatar">NA</div>
           <div>
-            <strong>Nadia Ahmed</strong>
-            <span>Founder, Urbanist</span>
+            <strong>Naimul Ahmed</strong>
+            <span>Founder, Hungry Town</span>
           </div>
         </div>
       </div>
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"The process was smooth from start to finish. They kept us informed, hit every deadline, and the final site is absolutely beautiful."</blockquote>
-        <div class="testi-author">
-          <div class="avatar">TK</div>
-          <div>
-            <strong>Tariq Khan</strong>
-            <span>Director, CloudPeak</span>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>
@@ -945,8 +932,8 @@
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li><a href="pixel.io.service26@gmail.com">pixel.io.service26@gmail.com</a></li>
-        <li><a href="tel:+8801575478716">+880 157 547 8516</a></li>
+        <li><a href="mailto:pixel.io.service26@gmail.com">pixel.io.service26@gmail.com</a></li>
+        <li><a href="tel:+8801575478516">+880 157 547 8516</a></li>
         <li><a href="#">Dhaka, Bangladesh</a></li>
       </ul>
     </div>
@@ -960,27 +947,20 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const textContainer = document.getElementById("typing-text");
-
-  // সম্পূর্ণ টেক্সট এবং কালার স্প্যান লজিক রেডি করা হলো
   const fullText = "We build websites your business deserves";
-
   let index = 0;
 
   function type() {
     if (index <= fullText.length) {
       let currentString = fullText.slice(0, index);
-
-      // "deserves" শব্দটিকে আলাদা করে সায়ান কলারের স্প্যান ক্লাসের ভেতর নেওয়া হলো
       if (currentString.includes("deserves")) {
         currentString = currentString.replace("deserves", '<span class="accent">deserves</span>');
       }
-
       textContainer.innerHTML = currentString + '<span class="cursor"></span>';
       index++;
-      setTimeout(type, 100); // ১০০ মিলি-সেকেন্ড পর পর প্রতিটা লেটার টাইপ হবে
+      setTimeout(type, 100);
     }
   }
-
   type();
 });
 </script>
