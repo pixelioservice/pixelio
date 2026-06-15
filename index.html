@@ -966,5 +966,256 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+  <div class="ai-chat-widget">
+  <button class="ai-chat-trigger" id="aiChatTrigger">
+    <span class="bot-icon">🤖</span>
+    <span class="bot-text">AI Assistant</span>
+  </button>
+
+  <div class="ai-chat-window" id="aiChatWindow">
+    <div class="ai-chat-header">
+      <div class="ai-avatar">🤖</div>
+      <div class="ai-header-info">
+        <h4>PixelAssistant</h4>
+        <p>⚡ Online | Powered by AI</p>
+      </div>
+      <button class="ai-close-btn" id="aiCloseBtn">&times;</button>
+    </div>
+
+    <div class="ai-chat-messages" id="aiChatMessages">
+      <div class="message bot-msg">
+        Hello! I am PixelAssistant. How can I help you with your web project today?
+      </div>
+    </div>
+
+    <div class="ai-chat-input-area">
+      <input type="text" id="aiChatInput" placeholder="Ask about services, pricing, process..." />
+      <button id="aiSendBtn">➔</button>
+    </div>
+  </div>
+</div>
+
+<style>
+
+  /* ── AI CHAT WIDGET STYLES ── */
+  .ai-chat-widget {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 2000;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ওপেনিং বাটন */
+  .ai-chat-trigger {
+    background: linear-gradient(135deg, #2563EB, #00D4FF);
+    border: none;
+    color: #F0F4FF;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .ai-chat-trigger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 212, 255, 0.5);
+  }
+  .ai-chat-trigger .bot-icon { font-size: 1.2rem; }
+
+  /* মেইন চ্যাট উইন্ডো */
+  .ai-chat-window {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 340px;
+    height: 450px;
+    background: #0F1628;
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: bottom right;
+  }
+
+  /* চ্যাট ওপেন স্টেট */
+  .ai-chat-window.active {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* চ্যাট হেডার */
+  .ai-chat-header {
+    background: #121929;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  }
+  .ai-avatar {
+    width: 38px; height: 38px;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid #00D4FF;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .ai-header-info h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: #F0F4FF; }
+  .ai-header-info p { font-size: 0.75rem; color: #00D4FF; }
+  .ai-close-btn {
+    margin-left: auto; background: none; border: none;
+    color: #8892A4; font-size: 1.5rem; cursor: pointer;
+  }
+  .ai-close-btn:hover { color: #F0F4FF; }
+
+  /* মেসেজ এরিয়া */
+  .ai-chat-messages {
+    flex: 1; padding: 15px;
+    overflow-y: auto; display: flex;
+    flex-direction: column; gap: 12px;
+    background: #0A0F1E;
+  }
+  .message {
+    padding: 10px 14px; border-radius: 12px;
+    font-size: 0.88rem; max-width: 80%;
+    line-height: 1.4; word-wrap: break-word;
+  }
+  .bot-msg {
+    background: #121929; color: #F0F4FF;
+    align-self: flex-start; border-bottom-left-radius: 4px;
+    border: 1px solid rgba(240,244,255,0.05);
+  }
+  .user-msg {
+    background: #2563EB; color: #white;
+    align-self: flex-end; border-bottom-right-radius: 4px;
+  }
+
+  /* ইনপুট এরিয়া */
+  .ai-chat-input-area {
+    padding: 12px; background: #121929;
+    display: flex; gap: 8px; border-top: 1px solid rgba(0, 212, 255, 0.1);
+  }
+  .ai-chat-input-area input {
+    flex: 1; background: #0A0F1E; border: 1px solid rgba(0, 212, 255, 0.1);
+    border-radius: 8px; padding: 10px 14px; color: #F0F4FF; font-size: 0.85rem;
+  }
+  .ai-chat-input-area input:focus { outline: 1px solid #00D4FF; }
+  .ai-chat-input-area button {
+    background: #2563EB; color: white; border: none;
+    border-radius: 8px; width: 38px; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .ai-chat-input-area button:hover { background: #00D4FF; }
+
+  /* স্ক্রোলবার কাস্টমাইজেশন */
+  .ai-chat-messages::-webkit-scrollbar { width: 4px; }
+  .ai-chat-messages::-webkit-scrollbar-thumb { background: rgba(0, 212, 255, 0.2); border-radius: 4px; }
+
+  /* মোবাইল রেস্পন্সিভ */
+  @media (max-width: 400px) {
+    .ai-chat-window { width: calc(100vw - 40px); height: 400px; right: -5px; }
+  }
+</style>
+
+<script>
+  // ── AI CHAT INTERACTION LOGIC ──
+  document.addEventListener("DOMContentLoaded", function() {
+    const trigger = document.getElementById("aiChatTrigger");
+    const windowBox = document.getElementById("aiChatWindow");
+    const closeBtn = document.getElementById("aiCloseBtn");
+    const sendBtn = document.getElementById("aiSendBtn");
+    const input = document.getElementById("aiChatInput");
+    const messagesContainer = document.getElementById("aiChatMessages");
+
+    // চ্যাট ওপেন/ক্লোজ টগল
+    trigger.addEventListener("click", () => windowBox.classList.add("active"));
+    closeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      windowBox.classList.remove("active");
+    });
+
+    // মেসেজ পাঠানোর ফাংশন
+    function sendMessage() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      // ইউজারের মেসেজ অ্যাড করা
+      const userDiv = document.createElement("div");
+      userDiv.className = "message user-msg";
+      userDiv.textContent = text;
+      messagesContainer.appendChild(userDiv);
+      input.value = "";
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      // বটের অটোমেটিক স্মার্ট রিপ্লাই (নকল AI রেসপন্স লজিক)
+      setTimeout(() => {
+        const botDiv = document.createElement("div");
+        botDiv.className = "message bot-msg";
+        botDiv.innerHTML = getBotResponse(text);
+        messagesContainer.appendChild(botDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }, 800);
+    }
+
+    // বাটন ক্লিক ও এন্টার কী হ্যান্ডেলার
+
+    sendBtn.addEventListener("click", sendMessage);
+    input.addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessage(); });
+
+    // কাস্টম কি-ওয়ার্ড বেসড রিপ্লাই সিস্টেম (Smart Offline AI)
+    function getBotResponse(query) {
+
+      const lowerQuery = query.toLowerCase();
+
+      if (lowerQuery.includes("service") || lowerQuery.includes("what you do")) {
+        return "We offer UI/UX Design, Full-Stack Web Development, E-Commerce Stores (Shopify/Custom), SEO, and Website Maintenance. You can check our <b>Services</b> section for details!";
+      }
+
+      if (lowerQuery.includes("price") || lowerQuery.includes("cost") || lowerQuery.includes("how much")) {
+        return "Pricing depends entirely on your project scope (Landing page vs Custom platform). Click the <b>'Get a Free Quote'</b> button or visit our contact page to get an exact estimate within 24 hours!";
+      }
+
+      if (lowerQuery.includes("contact") || lowerQuery.includes("hire") || lowerQuery.includes("email")) {
+        return "You can reach us at <b>pixel.io.service26@gmail.com</b> or call <b>+880 157 547 8516</b>. Alternatively, you can fill out the form on our Contact page.";
+      }
+
+      if (lowerQuery.includes("hello") || lowerQuery.includes("hi") || lowerQuery.includes("hey")) {
+        return "Hello there! Welcome to Pixel io. How can we elevate your digital presence today?";
+      }
+
+      if (lowerQuery.includes("process") || lowerQuery.includes("how it works")) {
+        return "Our workflow is simple: 1. Discovery Call ➔ 2. UI Design ➔ 3. Fast Clean Development ➔ 4. Final Launch with Testing.";
+      }
+
+      if (lowerQuery.includes("location") || lowerQuery.includes("where are you") || lowerQuery.includes("country") || lowerQuery.includes("place")) {
+  return "We are based in <b>Dhaka, Bangladesh</b>, but we operate 100% <b>Worldwide via Remote Work</b>! No matter where you are, we can collaborate seamlessly online.";
+}
+
+if (lowerQuery.includes("support") || lowerQuery.includes("help") || lowerQuery.includes("fix") || lowerQuery.includes("bug") || lowerQuery.includes("broken")) {
+  return "Need technical help? If something isn't working or you need maintenance, email us at <b>pixel.io.service26@gmail.com</b> or open a ticket via <b>Contact Us</b>. We will fix it ASAP!";
+}
+
+if (lowerQuery.includes("founder") || lowerQuery.includes("owner") || lowerQuery.includes("who made") || lowerQuery.includes("creator") || lowerQuery.includes("who developed")) {
+  return "Pixel io was founded by <b>Adnan Sanim</b>, a professional Web Developer & Designer based in Dhaka, Bangladesh. He started this studio to build high-performance, conversion-ready websites for businesses worldwide.";
+}
+
+      // ডিফল্ট রিপ্লাই
+      return "Thanks for reaching out! That sounds interesting. Please leave your request or details on our <b>Get a Free Quote / Contact Us</b> page, and our team will get back to you shortly!";
+    }
+  });
+</script>
 </body>
 </html>
