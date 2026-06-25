@@ -1,87 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service — Pixel io</title>
-  <style>
-    /* আপনার ওয়েবসাইটের ডার্ক থিম ও প্রাইভেসি পেজের সাথে মিল রেখে স্টাইল */
-    body {
-      background-color: #0b111e;
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 40px 20px;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.02);
-      padding: 40px;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 218, 255, 0.1);
-    }
-    h1 {
-      color: #00daff;
-      border-bottom: 2px solid rgba(0, 218, 255, 0.2);
-      padding-bottom: 15px;
-      margin-top: 0;
-    }
-    h2 {
-      color: #00daff;
-      margin-top: 30px;
-      font-size: 1.4rem;
-    }
-    p, li {
-      color: #b0b8c4;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    .back-home {
-      display: inline-block;
-      margin-bottom: 20px;
-      color: #00daff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: opacity 0.2s;
-    }
-    .back-home:hover {
-      opacity: 0.8;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Pixel io</title>
+    <meta name="description" content="Terms of Service for Pixel io. Operating protocols and client agreements.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .policy-container {
+            padding: 10rem 0 6rem 0;
+            min-height: 80vh;
+        }
+        .policy-card {
+            padding: 3.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .policy-card h1 {
+            font-size: 2.75rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--clr-blue), var(--clr-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .policy-card h2 {
+            font-size: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        .policy-card p {
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .policy-card ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--clr-text-muted);
+        }
+        .policy-card li {
+            margin-bottom: 0.5rem;
+        }
+        .back-btn {
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
+    <!-- Background Interactive Pixel Canvas -->
+    <canvas id="pixel-bg-canvas"></canvas>
 
-  <div class="container">
-    <a href="index.html" class="back-home">← Back to Home</a>
+    <!-- Header Navigation -->
+    <header class="navbar-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-pixel-cube">
+                    <span class="pixel-dot top-left"></span>
+                    <span class="pixel-dot bottom-right"></span>
+                </div>
+                <span class="logo-text"><span class="logo-pix">Pix</span><span class="logo-el">el</span> <span class="logo-io">io</span></span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#portfolio" class="nav-link">Work</a>
+                <a href="index.html#concept" class="nav-link">Process</a>
+            </nav>
 
-    <h1>Terms of Service</h1>
-    <p><strong>Last Updated: June 2026</strong></p>
-    <p>Welcome to Pixel io. By accessing our website and submitting a project request, you agree to comply with and be bound by the following terms and conditions.</p>
+            <div class="nav-actions">
+                <a href="index.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Home</a>
+            </div>
+        </div>
+    </header>
 
-    <h2>1. Services Provided</h2>
-    <p>Pixel io offers professional digital services, including web design, web development, and branding solutions. The exact scope of work, timeline, and deliverables for any project will be agreed upon separately in a formal project contract or proposal.</p>
+    <main class="container policy-container">
+        <div class="policy-card glass-panel">
+            <h1>Terms of Service</h1>
+            <p><strong>Effective Date: June 24, 2026</strong></p>
+            <p>Welcome to Pixel io. By accessing our website, contracting our 3D web designs, or transmitting query signals, you consent to comply with and be bound by the following operational protocols and agreement parameters.</p>
+            
+            <h2>1. Service Offerings & Scope</h2>
+            <p>Pixel io provides bespoke digital development, UI/UX systems design, e-commerce integrations, mobile responsive layouts, and interactive 3D browser solutions. Every project requires an explicit, signed Statement of Work (SOW) defining specifications, milestone schedules, and budget allocations before rendering begins.</p>
 
-    <h2>2. Project Requests & Accuracy</h2>
-    <p>When filling out our project inquiry form, you agree to provide accurate, current, and complete information regarding your business needs, contact details, and estimated budget range.</p>
+            <h2>2. Client Materials & Intellectual Assets</h2>
+            <p>You guarantee that any visual templates, assets, brand logo graphics, or text copy provided to us for inclusion in projects do not infringe upon any third-party intellectual property clearances. Upon receipt of full settlement, intellectual ownership of final customized website source code shifts to the client, while custom boilerplate libraries remain the assets of Pixel io.</p>
 
-    <h2>3. Intellectual Property</h2>
-    <p>All content, designs, code, graphics, and structure present on this website (Pixel io) are the intellectual property of Pixel io. You may not copy, reproduce, or distribute any part of this site without our prior written permission.</p>
+            <h2>3. Query Transmissions & Bids</h2>
+            <p>Bids and quote suggestions calculated through our contact interface represent estimated proposals based on specified criteria. They do not constitute a binding operational agreement until formally contracted in writing by our engineering administration.</p>
 
-    <h2>4. Client Cooperation & Revisions</h2>
-    <p>For custom web projects, timely feedback is essential. We work collaboratively from design mockups to the final build. The number of allowed revisions will be specified in your individual project agreement.</p>
+            <h2>4. Indemnification</h2>
+            <p>Pixel io is not liable for temporary service interruptions, database errors, or security failures on client-owned servers following project delivery, deploy nodes, and server sign-offs.</p>
 
-    <h2>5. Limitation of Liability</h2>
-    <p>Pixel io will make every effort to ensure websites are fast, secure, and fully tested. However, we are not liable for any temporary server downtime, data loss, or indirect damages caused by third-party hosting or external integrations after the final handoff.</p>
+            <h2>5. Agreement Protocol Changes</h2>
+            <p>We reserves the option to edit these operating protocols without individual alert nodes. Continued navigation of the site or project collaborations establishes agreement to updated parameters.</p>
 
-    <h2>6. Changes to These Terms</h2>
-    <p>We reserve the right to update or modify these Terms of Service at any time without prior notice. Your continued use of our website following any changes signifies your acceptance of the new terms.</p>
+            <a href="index.html" class="btn btn-primary btn-glow back-btn">Return to Main Dimension</a>
+        </div>
+    </main>
 
-    <h2>7. Contact Information</h2>
-    <p>If you have any questions or require clarification regarding these Terms of Service, please contact us directly through our official channels.</p>
-  </div>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-pixel-cube">
+                        <span class="pixel-dot top-left"></span>
+                        <span class="pixel-dot bottom-right"></span>
+                    </div>
+                    <span class="logo-text"><span class="logo-pix">Pix</span><span class="logo-el">el</span> <span class="logo-io">io</span></span>
+                </a>
+                <p>Sculpting high-performance digital dimensions for visionary businesses worldwide.</p>
+            </div>
 
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="index.html#services">Web Engineering</a></li>
+                    <li><a href="index.html#services">Premium UI/UX</a></li>
+                    <li><a href="index.html#services">3D Experiences</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="index.html#concept">Our Methodology</a></li>
+                    <li><a href="index.html#portfolio">Our Portfolio</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 Pixel io. All dimensions reserved.</p>
+                <div class="footer-legal">
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
 </body>
 </html>
