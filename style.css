@@ -371,6 +371,14 @@ section {
     gap: 0.25rem;
 }
 
+.logo-pix {
+    color: var(--clr-cyan);
+}
+
+.logo-io {
+    color: var(--clr-purple);
+}
+
 /* Nav Links */
 .nav-menu {
     display: flex;
